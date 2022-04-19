@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodie">
         <activity
+            android:name="com.cna.mobileprogramming.movieBuff.ui.MovieDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name="com.cna.mobileprogramming.movieBuff.ui.LandingActivity"
             android:exported="true">
             <intent-filter>
