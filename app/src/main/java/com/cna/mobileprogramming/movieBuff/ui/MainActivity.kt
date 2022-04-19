@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val retrofitService = RetrofitService.getInstance()
         val mainRepository = MainRepository(retrofitService)
+        val intentAnswer = intent.getStringExtra("type").toString()
         binding.recyclerview.adapter = adapter
 
         viewModel = ViewModelProvider(this, MyViewModelFactory(mainRepository)).get(MainViewModel::class.java)
@@ -45,7 +46,13 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.getAllMovies()
+        if(intentAnswer.equals("highRated")){
+            viewModel.getAllHighlyRatedMovies()
+        }
+        else{
+            viewModel.getAllMovies()
+        }
+
 
     }
 }

@@ -13,10 +13,18 @@ class LandingActivity : AppCompatActivity() {
 
 
         val allMoviesBtn = findViewById<Button>(R.id.allMovieBtn)
+        val highRatedMovieBtn = findViewById<Button>(R.id.highRatedMoviesBtn)
 
         allMoviesBtn.setOnClickListener(){
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+
+        highRatedMovieBtn.setOnClickListener(){
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("type","highRated")
+            startActivity(intent)
+        }
+
     }
 }
