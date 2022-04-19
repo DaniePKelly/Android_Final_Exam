@@ -29,6 +29,7 @@ class MovieAdapter : RecyclerView.Adapter<MainViewHolder>() {
         val movie = movieList[position]
         if (ValidationUtil.validateMovie(movie)) {
             holder.binding.name.text = movie.name
+            holder.binding.categories.text = movie.category
             Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
         }
     }

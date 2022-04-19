@@ -11,9 +11,9 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageview"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="200dp"
-        tools:background="@tools:sample/backgrounds/scenic"/>
+        android:scaleType="centerCrop"
+        tools:background="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/name"
@@ -24,11 +24,23 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@tools:sample/full_names"
         android:background="#D3FFFFFF"
-        android:padding="8dp"
-        android:lines="1"
-        android:maxLines="1"
+        android:padding="10dp"
+        android:lines="2"
+        android:maxLines="2"
         android:layout_gravity="bottom"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/categories"
+        android:text="Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="bottom"
+        android:paddingLeft="10dp"
+        android:lines="1"
+        android:maxLines="1"
+        android:background="#D3FFFFFF" />
 
 </androidx.cardview.widget.CardView>
