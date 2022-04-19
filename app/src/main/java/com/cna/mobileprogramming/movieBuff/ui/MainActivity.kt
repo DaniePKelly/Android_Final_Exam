@@ -46,9 +46,12 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        if(intentAnswer.equals("highRated")){
+        if(intentAnswer.equals("highlyRated")){
             viewModel.getAllHighlyRatedMovies()
-        }
+        }else if (intentAnswer.equals("latest")){
+            viewModel.getLatestMovies()
+        }else if(intentAnswer.equals("fave"))
+            viewModel.getFavouriteMovies()
         else{
             viewModel.getAllMovies()
         }

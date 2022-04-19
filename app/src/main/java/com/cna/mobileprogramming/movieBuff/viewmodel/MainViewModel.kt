@@ -31,6 +31,7 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
 
     }
     fun getAllHighlyRatedMovies(){
+        movies.clear()
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = mainRepository.getAllMovies()
             withContext(Dispatchers.Main) {
@@ -49,6 +50,48 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
             }
         }
 
+    }
+
+    fun getLatestMovies(){
+        movies.clear()
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = mainRepository.getAllMovies()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+
+                    for(item in response.body()!!){
+                        if(item.category.equals("Latest")){
+                            movies.add(item)
+                        }
+                    }
+                    movieList.postValue(movies)
+                    loading.value = false
+                } else {
+                    onError("Error : ${response.message()} ")
+                }
+            }
+        }
+
+    }
+
+    fun getFavouriteMovies(){
+        movies.clear()
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = mainRepository.getAllMovies()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    for(item in response.body()!!){
+                        if(item.category.equals("Favorites")){
+                            movies.add(item)
+                        }
+                    }
+                    movieList.postValue(movies)
+                    loading.value = false
+                } else {
+                    onError("Error : ${response.message()} ")
+                }
+            }
+        }
     }
 
     private fun onError(message: String) {

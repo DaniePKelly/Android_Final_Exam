@@ -14,6 +14,8 @@ class LandingActivity : AppCompatActivity() {
 
         val allMoviesBtn = findViewById<Button>(R.id.allMovieBtn)
         val highRatedMovieBtn = findViewById<Button>(R.id.highRatedMoviesBtn)
+        val latestMovieBtn = findViewById<Button>(R.id.latestBtn)
+        val favMoiveBtn = findViewById<Button>(R.id.favouritesBtn)
 
         allMoviesBtn.setOnClickListener(){
             val intent = Intent(this,MainActivity::class.java)
@@ -22,9 +24,21 @@ class LandingActivity : AppCompatActivity() {
 
         highRatedMovieBtn.setOnClickListener(){
             val intent = Intent(this,MainActivity::class.java)
-            intent.putExtra("type","highRated")
+            intent.putExtra("type","highlyRated")
             startActivity(intent)
         }
+
+        latestMovieBtn.setOnClickListener(){
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("type","latest")
+            startActivity(intent)
+        }
+        favMoiveBtn.setOnClickListener(){
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("type","fave")
+            startActivity(intent)
+        }
+
 
     }
 }
